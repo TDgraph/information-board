@@ -1,0 +1,38 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+  }
+  body{
+    background-color: rgb(89, 89, 89);
+  }
+  .container{
+    align-items: center;
+    text-align: center;
+    margin: 200px 0 0 0;
+    padding: 10px;
+  }
+  .btns{
+    margin-top: 30px;
+  }
+  .btns button{
+    padding: 10px 30px;
+    background-color: red;
+    border: 1px solid red;
+    border: 5px;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: 0.5s ease;
+  }
+  .btns button:hover{
+    background-color: blue;
+  }
+  #res{
+    margin-left: 10px;
+  }
+  #inc{
+    margin-left: 10px;
+  }
