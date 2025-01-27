@@ -1,70 +1,199 @@
-# Getting Started with Create React App
+# Info Board Website
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Overview
+The **Info Board** is a modern, responsive web application designed to provide users with detailed information about various topics, including scholarships, prerequisites for university courses, and more. Built using **React**, **TailwindCSS**, and **Node.js**, it offers a seamless user experience and secure authentication using **JWT**.
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+## Features
 
-### `npm start`
+### Frontend Features
+- **Dynamic Homepage**:
+  - Displays an "Info Board" logo that links to a menu of university websites.
+  - Header navigation includes links to About, Services, Contact, and Signup/Login pages.
+- **About Page**: Describes the purpose and goals of the platform.
+- **Services Page**:
+  - Features a search bar to look up information on scholarships, courses, and more.
+- **Contact Page**:
+  - Includes an email address (`info-board@gmail.com`) for user inquiries.
+- **Signup/Login Page**:
+  - Signup form with fields for username, email, and password.
+  - Dynamic header changes from "Sign Up" to "Log In" based on user authentication state.
+- **Footer**:
+  - Newsletter subscription form for users to stay updated.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### Backend Features
+- **User Authentication**:
+  - Signup and login functionality with hashed passwords (using **bcryptjs**).
+  - Token-based authentication with **JWT** for secure session management.
+- **REST API**:
+  - Endpoints for user management, authentication, and protected routes.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+---
 
-### `npm test`
+## Architecture and Technologies
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Architecture
+The project follows a **client-server architecture**:
+- **Frontend**:
+  - Built with **React** for a responsive and dynamic user interface.
+  - **TailwindCSS** for streamlined styling and responsive design.
+  - **React Router** for seamless navigation between pages.
+- **Backend**:
+  - **Node.js** runtime environment.
+  - **Express.js** framework for building RESTful APIs.
+  - **JWT** for authentication and secure communication.
+- **Database**:
+  - Mock in-memory user storage (can be replaced with MongoDB or MySQL for production).
 
-### `npm run build`
+### Technologies Used
+- **Frontend**:
+  - React
+  - TailwindCSS
+  - React Router
+- **Backend**:
+  - Node.js
+  - Express.js
+  - bcryptjs (for password hashing)
+  - jsonwebtoken (for JWT authentication)
+- **Other Tools**:
+  - Axios: For API communication.
+  - Git/GitHub: Version control.
+  - VS Code: Code editor.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+---
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Installation and Setup
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Prerequisites
+- **Node.js**: Ensure Node.js is installed on your machine (v14 or higher).
+- **npm** or **yarn**: Package manager for dependencies.
 
-### `npm run eject`
+### Clone the Repository
+```bash
+git clone https://github.com/yourusername/info-board.git
+cd info-board
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### Frontend Setup
+1. Navigate to the frontend directory:
+   ```bash
+   cd front-end
+   ```
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+3. Start the development server:
+   ```bash
+   npm start
+   ```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Backend Setup
+1. Navigate to the backend directory:
+   ```bash
+   cd back-end
+   ```
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+3. Start the server:
+   ```bash
+   node index.js
+   ```
+   The backend will run on `http://localhost:5000` by default.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+---
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## API Endpoints
 
-## Learn More
+### Authentication
+- **POST** `/signup`:
+  - Description: Register a new user.
+  - Request Body:
+    ```json
+    {
+      "username": "exampleuser",
+      "email": "example@gmail.com",
+      "password": "securepassword"
+    }
+    ```
+  - Response:
+    ```json
+    {
+      "message": "User signed up successfully!"
+    }
+    ```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- **POST** `/login`:
+  - Description: Authenticate a user and return a JWT token.
+  - Request Body:
+    ```json
+    {
+      "email": "example@gmail.com",
+      "password": "securepassword"
+    }
+    ```
+  - Response:
+    ```json
+    {
+      "token": "jwt_token_here",
+      "message": "Login successful!"
+    }
+    ```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### Protected Routes
+- **GET** `/protected`:
+  - Description: Access a protected resource with a valid token.
+  - Headers:
+    ```json
+    {
+      "Authorization": "Bearer jwt_token_here"
+    }
+    ```
+  - Response:
+    ```json
+    {
+      "message": "Access granted",
+      "user": { "email": "example@gmail.com" }
+    }
+    ```
 
-### Code Splitting
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## Development Highlights
 
-### Analyzing the Bundle Size
+### Successes
+- Fully responsive design using TailwindCSS.
+- JWT-based secure authentication.
+- Dynamic header with authentication state tracking.
+- Functional search bar and newsletter subscription.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+### Challenges
+- Debugging API calls and handling CORS errors.
+- Managing dynamic state transitions in React.
+- Designing a visually appealing yet functional layout.
 
-### Making a Progressive Web App
+### Areas for Improvement
+- Implement a production-grade database (e.g., MongoDB).
+- Enhance error handling and form validation on the frontend.
+- Optimize for performance and SEO.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+### Lessons Learned
+- Importance of clear communication between frontend and backend.
+- Best practices for managing state in React.
+- Effective collaboration using Git and GitHub.
 
-### Advanced Configuration
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+## Next Steps
+- Add admin roles and user dashboards.
+- Integrate with real-world data sources (e.g., APIs for scholarships).
+- Deploy the app to production using **Netlify** (frontend) and **Heroku** (backend).
+- Gather user feedback and iterate on the design and functionality.
 
-### Deployment
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
 
-### `npm run build` fails to minify
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
